@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
+
+    <title>INSYNE Library</title>
+
+    <link rel="icon" href="assets/img/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+	<h1>🎮 INSYNE Library</h1>
+	<div class="carousel">
+        <img src="assets/img/setup1.webp" alt="setup1">
+        <img src="assets/img/setup2.webp" alt="setup2">
+        <img src="assets/img/setup3.webp" alt="setup3">
+		<img src="assets/img/setup4.webp" alt="setup4">
+    </div>
+	<a class="video-card" href="https://www.youtube.com/watch?v=Ec2ADKWbC54" target="_blank">
+	<img src="assets/img/video-thumb.webp" alt="YouTube video">
+	<div class="video-info">
+		<span class="play">▶</span>
+		<p>Unboxing & Review — Cómo Empezó Todo</p>
+	</div>
+	</a>
+	<p id="count" style="text-align:center;"></p>
+	<button onclick="location.reload()" style="display:block;margin:10px auto;">Mostrar todo</button>
+	<div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input id="search" type="text" placeholder="Buscar juego...">
+    </div>
+	<ul id="list"></ul>
+	<script src="assets/js/app.js"></script>
+	<div id="modal" class="modal">
+        <span id="close">&times;</span>
+        <img id="modal-img">
+    </div>
+</body>
+</html>

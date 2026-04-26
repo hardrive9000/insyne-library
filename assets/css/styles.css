@@ -1,0 +1,246 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, Arial;
+    background: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+.search-box {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 12px 10px 36px;
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 2px rgba(56,189,248,0.3);
+}
+
+.search-box input::placeholder {
+    color: #94a3b8;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+#list {
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+}
+
+h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+    gap: 10px;
+}
+
+.card {
+    background: #1e293b;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.card:hover {
+    background: #334155;
+    transform: scale(1.03);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px;
+    }
+}
+
+@-moz-document url-prefix() {
+    .carousel {
+        scrollbar-width: thin;
+        scrollbar-color: #334155 #0f172a;
+    }
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 1000px;
+    scroll-snap-type: x mandatory;
+    border-radius: 12px;
+    background: #1e293b;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+	scroll-behavior: smooth;
+}
+
+.carousel img {
+    height: 140px;
+    border-radius: 10px;
+    cursor: pointer;
+    scroll-snap-align: center;
+    transition: all 0.2s ease;
+}
+
+.carousel img:hover {
+    transform: scale(1.05);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+#close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-track {
+    background: #0f172a;
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #334155, #38bdf8);
+    border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+}
+
+.video-card {
+    display: block;
+    max-width: 900px;
+    margin: 15px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1e293b;
+    text-decoration: none;
+    color: #e2e8f0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
+}
+
+.video-card img {
+    width: 100%;
+    display: block;
+}
+
+.video-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+}
+
+.video-info p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.play {
+    font-size: 18px;
+    color: #38bdf8;
+}
+
+.video-card:hover {
+    transform: scale(1.02);
+    background: #334155;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 16px;
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #334155;
+    border-color: #38bdf8;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+#count {
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 6px 14px;
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius: 999px;
+    font-size: 14px;
+}
