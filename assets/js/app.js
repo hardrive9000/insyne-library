@@ -17,6 +17,7 @@ function init(data) {
 
     const list = document.getElementById('list');
     const search = document.getElementById('search');
+    const clearBtn = document.getElementById('clear-search');
 
     function render(items) {
         document.getElementById('count').textContent = `${items.length} juegos`;
@@ -66,7 +67,10 @@ function init(data) {
     render(data);
 
     search.addEventListener('input', () => {
+
         const q = search.value.toLowerCase();
+
+        clearBtn.classList.toggle('visible', q.length > 0);
 
         const filtered = data.filter(i =>
             i.juego.toLowerCase().includes(q) ||
@@ -75,34 +79,44 @@ function init(data) {
 
         render(filtered);
     });
+
+    clearBtn.addEventListener('click', () => {
+
+        search.value = '';
+        clearBtn.classList.remove('visible');
+
+        render(data);
+
+        search.focus();
+    });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
 
-	const modal = document.getElementById("modal");
-	const modalImg = document.getElementById("modal-img");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
 
-	document.querySelectorAll(".carousel img").forEach(img => {
+    document.querySelectorAll(".carousel img").forEach(img => {
 
-		img.style.cursor = "zoom-in";
+        img.style.cursor = "zoom-in";
 
-		img.addEventListener("click", () => {
-			modal.style.display = "flex";
-			modalImg.src = img.src;
-		});
+        img.addEventListener("click", () => {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        });
 
-	});
+    });
 
-	document.addEventListener("click", (e) => {
-		if (e.target.id === "close") {
-			modal.style.display = "none";
-		}
-	});
+    document.addEventListener("click", (e) => {
+        if (e.target.id === "close") {
+            modal.style.display = "none";
+        }
+    });
 
-	modal.addEventListener("click", (e) => {
-		if (e.target === modal) {
-			modal.style.display = "none";
-		}
-	});
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 
 });
