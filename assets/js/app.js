@@ -7,7 +7,8 @@ fetch('https://docs.google.com/spreadsheets/d/17y-2OAHVNqEOV7QvZWOMvXze-hn3faRnT
 
         const data = rows.map(r => ({
             sistema: r.c[0]?.v || "",
-            juego: r.c[1]?.v || ""
+            juego: r.c[1]?.v || "",
+            link: r.c[2]?.v || ""
         }));
 
         init(data);
@@ -26,7 +27,7 @@ function init(data) {
         const grouped = {};
         items.forEach(i => {
             if (!grouped[i.sistema]) grouped[i.sistema] = [];
-            grouped[i.sistema].push(i.juego);
+            grouped[i.sistema].push(i);
         });
 
         Object.keys(grouped).sort().forEach(system => {
@@ -48,13 +49,24 @@ function init(data) {
             grid.className = 'grid';
 
             grouped[system]
-                .sort((a, b) => a.localeCompare(b))
-                .forEach(game => {
+                .sort((a, b) => a.juego.localeCompare(b.juego))
+                .forEach(item => {
 
                     const card = document.createElement('div');
                     card.className = 'card';
 
-                    card.textContent = game;
+                    card.textContent = item.link
+                        ? `${item.juego} ⬇`
+                        : item.juego;
+
+                    if (item.link) {
+
+                        card.style.border = "1px solid #38bdf8";
+
+                        card.onclick = () => {
+                            window.open(item.link, '_blank');
+                        };
+                    }
 
                     grid.appendChild(card);
                 });
