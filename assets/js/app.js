@@ -122,6 +122,8 @@ function init(data) {
 
         const q = search.value.toLowerCase();
 
+        search.classList.toggle('has-value', q.length > 0);
+
         clearBtn.classList.toggle('visible', q.length > 0);
 
         const filtered = data.filter(i =>
@@ -135,6 +137,7 @@ function init(data) {
     clearBtn.addEventListener('click', () => {
 
         search.value = '';
+        search.classList.remove('has-value');
         clearBtn.classList.remove('visible');
 
         render(data);

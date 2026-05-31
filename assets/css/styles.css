@@ -39,6 +39,11 @@ h1 {
     box-shadow: 0 0 0 2px rgba(56,189,248,0.3);
 }
 
+.search-box input.has-value {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 2px rgba(56,189,248,0.15);
+}
+
 .search-box input::placeholder {
     color: #94a3b8;
 }
