@@ -265,4 +265,6 @@ button:active {
     border: 1px solid #334155;
     border-radius: 999px;
     font-size: 14px;
+    opacity: 1;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }

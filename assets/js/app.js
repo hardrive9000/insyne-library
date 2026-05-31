@@ -14,14 +14,54 @@ fetch('https://docs.google.com/spreadsheets/d/17y-2OAHVNqEOV7QvZWOMvXze-hn3faRnT
         init(data);
     });
 
+function animateCount(target) {
+
+    const counter = document.getElementById('count');
+
+    const duration = 1500;
+    const start = performance.now();
+
+    counter.style.opacity = "0.7";
+    counter.style.transform = "scale(1.08)";
+
+    function update(now) {
+
+        const progress = Math.min((now - start) / duration, 1);
+
+        const current = Math.floor(progress * target);
+
+        counter.textContent = `${current} juegos`;
+
+        if (progress < 1) {
+
+            requestAnimationFrame(update);
+
+        } else {
+
+            counter.textContent = `${target} juegos`;
+
+            counter.style.opacity = "1";
+            counter.style.transform = "scale(1)";
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
 function init(data) {
 
     const list = document.getElementById('list');
     const search = document.getElementById('search');
     const clearBtn = document.getElementById('clear-search');
 
-    function render(items) {
-        document.getElementById('count').textContent = `${items.length} juegos`;
+    function render(items, animate = false) {
+
+        if (animate) {
+            animateCount(items.length);
+        } else {
+            document.getElementById('count').textContent = `${items.length} juegos`;
+        }
+
         list.innerHTML = '';
 
         const grouped = {};
@@ -76,7 +116,7 @@ function init(data) {
         });
     }
 
-    render(data);
+    render(data, true);
 
     search.addEventListener('input', () => {
 
