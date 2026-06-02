@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.cursor = "zoom-in";
 
         img.addEventListener("click", () => {
-            modal.style.display = "flex";
+            modal.classList.add("show");
             modalImg.src = img.src;
         });
 
@@ -164,13 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("click", (e) => {
         if (e.target.id === "close") {
-            modal.style.display = "none";
+            modal.classList.remove("show");
         }
     });
 
     modal.addEventListener("click", (e) => {
         if (e.target === modal) {
-            modal.style.display = "none";
+            modal.classList.remove("show");
         }
     });
 
