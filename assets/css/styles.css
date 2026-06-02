@@ -100,15 +100,23 @@ h2 {
 .card {
     background: #1e293b;
     border-radius: 8px;
-    transition: all 0.2s ease;
     cursor: pointer;
     font-size: 14px;
     padding: 10px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .card:hover {
     background: #334155;
-    transform: scale(1.03);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.25),
+        0 0 0 1px rgba(56,189,248,0.15);
 }
 
 @media (max-width: 600px) {
