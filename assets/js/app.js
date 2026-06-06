@@ -151,15 +151,65 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modal-img");
 
-    document.querySelectorAll(".carousel img").forEach(img => {
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    const images = [...document.querySelectorAll(".carousel img")];
+
+    let currentIndex = 0;
+
+    function updateArrows() {
+
+        prev.style.display =
+            currentIndex === 0 ? "none" : "block";
+
+        next.style.display =
+            currentIndex === images.length - 1
+                ? "none"
+                : "block";
+    }
+
+    images.forEach((img, index) => {
 
         img.style.cursor = "zoom-in";
 
         img.addEventListener("click", () => {
+
+            currentIndex = index;
+
             modal.classList.add("show");
+
             modalImg.src = img.src;
+
+            updateArrows();
         });
 
+    });
+
+    prev.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        if (currentIndex > 0) {
+            currentIndex--;
+
+            modalImg.src = images[currentIndex].src;
+
+            updateArrows();
+        }
+    });
+
+    next.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+
+            modalImg.src = images[currentIndex].src;
+
+            updateArrows();
+        }
     });
 
     document.addEventListener("click", (e) => {
@@ -174,4 +224,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    document.addEventListener("keydown", (e) => {
+
+        if (!modal.classList.contains("show"))
+            return;
+
+        if (e.key === "ArrowLeft" && currentIndex > 0) {
+            prev.click();
+        }
+
+        if (e.key === "ArrowRight" &&
+            currentIndex < images.length - 1) {
+            next.click();
+        }
+
+        if (e.key === "Escape") {
+            modal.classList.remove("show");
+        }
+    });
 });
